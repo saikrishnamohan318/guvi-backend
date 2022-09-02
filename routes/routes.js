@@ -14,6 +14,7 @@ router.post('/addDetails', (req,res)=>{
         }
     })
 })
+
 router.get('/getDetails', (req,res)=>{
     userDetailsschema.find({}, (err,doc)=>{
         if(err){
@@ -23,7 +24,8 @@ router.get('/getDetails', (req,res)=>{
         }
     })
 })
-/*router.get('/getDetails/:email', (req,res)=>{
+
+router.get('/getDetails/:email', (req,res)=>{
     userDetailsschema.find({email: req.params.email}, (err,doc)=>{
         if(err){
             res.send(err);
@@ -31,7 +33,7 @@ router.get('/getDetails', (req,res)=>{
             res.send(doc);
         }
     })
-})*/
+})
 
 router.put('/addDetails/:email', (req,res)=>{
     var body = req.body;
