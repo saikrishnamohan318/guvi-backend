@@ -7,9 +7,11 @@ router.post('/addDetails', (req,res)=>{
     var ud = new userDetailsschema(body);
     ud.save((err,doc)=>{
         if(err){
+            res.status(409);
             res.send(err);
         }
         if(doc){
+            res.status(201);
             res.send(doc);
         }
     })
@@ -18,8 +20,10 @@ router.post('/addDetails', (req,res)=>{
 router.get('/getDetails', (req,res)=>{
     userDetailsschema.find({}, (err,doc)=>{
         if(err){
+            res.status(409);
             res.send(err);
         }else{
+            res.status(200);
             res.send(doc);
         }
     })
@@ -28,8 +32,10 @@ router.get('/getDetails', (req,res)=>{
 router.get('/getDetails/:email', (req,res)=>{
     userDetailsschema.find({email: req.params.email}, (err,doc)=>{
         if(err){
+            res.status(409);
             res.send(err);
         }else{
+            res.status(200);
             res.send(doc);
         }
     })
@@ -39,6 +45,7 @@ router.put('/addDetails/:email', (req,res)=>{
     var body = req.body;
     userDetailsschema.findOne({email: req.params.email}, (err,doc)=>{
         if(err){
+            res.status(409);
             res.send(err);
         }else{
             doc.age = body.age;
@@ -46,6 +53,7 @@ router.put('/addDetails/:email', (req,res)=>{
             doc.mobile = body.mobile;
             doc.city = body.city;
             doc.save();
+            res.status(201);
             res.send(doc);
         }
         
