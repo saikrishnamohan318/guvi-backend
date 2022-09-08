@@ -11,8 +11,10 @@ var blogDetails = new schema({
     },
     url: {
         type: String
+    },
+    datePublished: {
+        type: Date
     }
-
 })
 
 module.exports = mongoose.model('blogDetails', blogDetails);
