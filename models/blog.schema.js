@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 
 var blogDetails = new schema({
-    title: {
+    name: {
         type: String
     },
     description: {
