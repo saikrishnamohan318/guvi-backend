@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var userDetailsschema = require('../models/schema');
+/*guvi routes*/
+var userDetailsschema = require('../models/guvi.schema');
 router.post('/addDetails', (req,res)=>{
     var body = req.body;
     var ud = new userDetailsschema(body);
@@ -57,6 +58,35 @@ router.put('/addDetails/:email', (req,res)=>{
             res.send(doc);
         }
         
+    })
+})
+
+/*blog routes*/
+var blogSchema = require('../models/blog.schema');
+router.post('/postBlog', (req,res) => {
+    var body = req.body;
+    var bs = new blogSchema(body);
+    bs.save((err,doc)=>{
+        if(err){
+            res.status(409);
+            res.send(err);
+        }
+        if(doc){
+            res.status(201);
+            res.send(doc);
+        }
+    })
+})
+
+router.get('/getBlogs', (req,res)=>{
+    blogSchema.find({}, (err,doc)=>{
+        if(err){
+            res.status(409);
+            res.send(err);
+        }else{
+            res.status(200);
+            res.send(doc);
+        }
     })
 })
 module.exports = router;
