@@ -89,4 +89,34 @@ router.get('/getBlogs', (req,res)=>{
         }
     })
 })
+
+/*Parking routes*/
+var parkingSchema = require('../models/parking.schema');
+router.post('/postCar', (req,res) => {
+    var body = req.body;
+    var ps = new parkingSchema(body);
+    ps.save((err,doc)=>{
+        if(err){
+            res.status(409);
+            res.send(err);
+        }
+        if(doc){
+            res.status(201);
+            res.send(doc);
+        }
+    })
+})
+
+router.get('/getCars', (req,res)=>{
+    parkingSchema.find({}, (err,doc)=>{
+        if(err){
+            res.status(409);
+            res.send(err);
+        }else{
+            res.status(200);
+            res.send(doc);
+        }
+    })
+})
+
 module.exports = router;
