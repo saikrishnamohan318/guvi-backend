@@ -119,4 +119,20 @@ router.get('/getCars', (req,res)=>{
     })
 })
 
+router.put('/addCarDetails/:vehicle', (req,res)=>{
+    var body = req.body;
+    parkingSchema.findOne({vehicleNum: req.params.vehicle}, (err,doc)=>{
+        if(err){
+            res.status(409);
+            res.send(err);
+        }else{
+            doc.checkOut = body.checkOut;
+            doc.save();
+            res.status(201);
+            res.send(doc);
+        }
+        
+    })
+})
+
 module.exports = router;
