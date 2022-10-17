@@ -119,9 +119,9 @@ router.get('/getCars', (req,res)=>{
     })
 })
 
-router.put('/addCarDetails/:vehicle', (req,res)=>{
+router.put('/addCarDetails/:id', (req,res)=>{
     var body = req.body;
-    parkingSchema.findOne({vehicleNum: req.params.vehicle}, (err,doc)=>{
+    parkingSchema.findOne({_id: req.params.id}, (err,doc)=>{
         if(err){
             res.status(409);
             res.send(err);
