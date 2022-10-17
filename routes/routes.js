@@ -126,7 +126,7 @@ router.put('/addCarDetails/:id', (req,res)=>{
             res.status(409);
             res.send(err);
         }else{
-            doc.checkOut = body.checkOut;
+            doc.checkOut = body.time;
             doc.save();
             res.status(201);
             res.send(doc);
