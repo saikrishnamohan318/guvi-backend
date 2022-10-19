@@ -126,7 +126,7 @@ router.put('/addCarDetails/:vehicleNumber', (req,res)=>{
             res.status(409);
             res.send(err);
         }else{
-            doc.checkOut = body.time;
+            doc.Outtime = body.time;
             doc.save();
             res.status(201);
             res.send(doc);

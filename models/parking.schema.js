@@ -9,10 +9,10 @@ var parkingDetails = new schema({
     name: {
         type: String
     },
-    checkIn: {
+    Intime: {
         type: Date
     },
-    checkOut: {
+    Outtime: {
         type: Date
     }
 })
