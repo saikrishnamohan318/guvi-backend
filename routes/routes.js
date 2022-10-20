@@ -119,7 +119,7 @@ router.get('/getCars', (req,res)=>{
     })
 })
 
-router.post('/postCarDetails/:vehicleNumber', (req,res)=>{
+router.put('/postCar/:vehicleNumber', (req,res)=>{
     var body = req.body;
     parkingSchema.findOne({vehicleNum: req.params.vehicleNumber}, (err,doc)=>{
         if(err){
