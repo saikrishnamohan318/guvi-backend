@@ -1,9 +1,11 @@
 var express = require('express');
+var bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
 var router = express.Router();
 
 /*guvi routes*/
 var userDetailsschema = require('../models/guvi.schema');
-router.post('/addDetails', (req,res)=>{
+router.post('/addDetails', async (req,res)=>{
     var body = req.body;
     var ud = new userDetailsschema(body);
     ud.save((err,doc)=>{

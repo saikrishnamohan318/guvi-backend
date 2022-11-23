@@ -6,7 +6,7 @@ var routes = require('./routes/routes');
 app.use(cors());
 app.use(express.json());
 app.use(routes);
-var url = 'mongodb+srv://Saikrishnamohan:4Sl4stzyXpbvk7hb@cluster0.eggzxuh.mongodb.net/?retryWrites=true&w=majority'
+var url = 'mongodb+srv://Saikrishnamohan:xBaFmYq94WTdT2zs@cluster0.eggzxuh.mongodb.net/?retryWrites=true&w=majority'
 
 mongoose.connect(url, (err)=>{
     if(err){
